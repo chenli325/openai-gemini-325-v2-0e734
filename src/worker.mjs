@@ -51,6 +51,9 @@ class HttpError extends Error {
 const fixCors = ({ headers, status, statusText }) => {
   headers = new Headers(headers);
   headers.set("Access-Control-Allow-Origin", "*");
+    // 禁用压缩
+  headers.set("Content-Encoding", "identity");
+  headers.set("Cache-Control", "no-transform");
   return { headers, status, statusText };
 };
 
